@@ -19,42 +19,64 @@ class Driver():
 		self.aggression = aggression
 		self.composure = composure
 		self.min_racing_skill = min_racing_skill
-		self.start_skill
+		self.start_skill = start_skill
 
 	def set_vehicle_file(self, dir):
 		self.vehicle_file = dir
 
+# Helper function to check if string represents an int
+def represents_int(li):
+	for s in li
+		try:
+			int(s)
+		except ValueError:
+			return False
+	return True
+
 # Read in settings from json
 def read_json():
-	data = json.load("./settings.json")
-	return vehicle_dir, output_dir, mod_mgr_path
+	with open("settings.json") as file:
+		data = json.load(file)
+	file.close()
+	modified = data["modified"]
+	if modified == "True":
+		cship_name = data["cship_name"]
+		vehicle_dir = data["paths"]["vehicle_dir"]
+		output_dir = data["paths"]["output_dir"]
+		mod_mgr_path = data["paths"]["mod_mgr_path"]
+		return [modified, cship_name, vehicle_dir, output_dir, mod_mgr_path]
+	return [modified]
 
 # Read in data from csv, returns list of driver objects
 def read_csv():
 	drivers = []
 	with open('./data.csv') as file:
+		code = "pass"
 		csv_reader = csv.reader(file, delimiter=',')
 		csv_reader.next()
 		for row in csv_reader:
-			drivers.append(Driver(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9], row[10]))
-	return drivers
+			try:	
+				drivers.append(Driver(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9], row[10]))
+			except * as err:
+				code = "err"
+	return code, drivers
 
 # Read in vehicles, returns list of strings
 def read_txt():
 	with open('./vehicles.txt', 'r') as file:
 		vehicles = file.readlines()
+		for string in vehicles:
+			string.replace("\"", "")
 	return vehicles
 
 # Get list of models
 def get_models(vehicle_dir):
-	os.chdir(vehicle_dir)
-	models = os.listdir()
+	models = os.listdir(vehicle_dir)
 	return models
 
 # Get latest version of vehicle
-def get_latest_versions(vehicle_dir, vehicle):
-	os.chdir(vehicle_dir)
-	ver_list = os.listdir(Path(".", vehicle))
+def get_latest_version(vehicle_dir, vehicle):
+	ver_list = os.listdir(Path(vehicle_dir, ".", vehicle))
 	ver_list_floats = [float(i) for i in ver_list]
 	return max(ver_list_floats)
 
@@ -74,6 +96,7 @@ def extract_vehicle_info(vehicle_contents, tag):
 
 # Extracts vehicles
 def get_vehicles(vehicle_dir, temp_dir, vehicles, mod_mgr_path):
+	'''
 	os.chdir(temp_dir)
 	if not os.exists(Path(".", "temp"))
 		os.makedirs(temp_dir)
@@ -98,9 +121,10 @@ def get_vehicles(vehicle_dir, temp_dir, vehicles, mod_mgr_path):
 
 	if os.exists(temp_dir):
 		shutil.rmtree(temp_dir)
-
+	
 	return None
-
+	'''
+	pass
 
 
 

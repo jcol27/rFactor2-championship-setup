@@ -1,9 +1,13 @@
 import unittest
+import unpack
+import ai_setup
 
 class Test(unittest.TestCase):
 
 	def test_read_json(self):
-		pass
+		data = unpack.read_json()
+		print(data)
+		self.AssertTrue(1==1)
 
 	def test_read_csv(self):
 		pass

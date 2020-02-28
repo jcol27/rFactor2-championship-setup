@@ -4,6 +4,7 @@ def delete_existing_dirs():
 	pass
 
 def create_dirs(drivers):
+	'''
 	for d in drivers:
 		# Create car directory
 		car_dir = Path('.', player_dir, d.car)
@@ -21,10 +22,12 @@ def create_dirs(drivers):
 		### file idx
 		print(f"Copying {driver.first} {driver.last}")
 		copy(, ai_dir)
-
+	'''
+	pass
 
 
 def create_rcd_file(driver):
+	'''
 	rcd = ""
 	rcd.join("\n", 
 		[
@@ -62,4 +65,6 @@ def create_rcd_file(driver):
 		file.close()
 
 	return None
+	'''
+	pass
 
