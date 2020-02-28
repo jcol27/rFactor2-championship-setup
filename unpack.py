@@ -26,7 +26,7 @@ class Driver():
 
 # Helper function to check if string represents an int
 def represents_int(li):
-	for s in li
+	for s in li:
 		try:
 			int(s)
 		except ValueError:
@@ -50,20 +50,20 @@ def read_json():
 # Read in data from csv, returns list of driver objects
 def read_csv():
 	drivers = []
-	with open('./data.csv') as file:
+	with open('drivers.csv') as file:
 		code = "pass"
 		csv_reader = csv.reader(file, delimiter=',')
-		csv_reader.next()
+		next(csv_reader)
 		for row in csv_reader:
 			try:	
 				drivers.append(Driver(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9], row[10]))
-			except * as err:
+			except:
 				code = "err"
 	return code, drivers
 
 # Read in vehicles, returns list of strings
 def read_txt():
-	with open('./vehicles.txt', 'r') as file:
+	with open('vehicles.txt', 'r') as file:
 		vehicles = file.readlines()
 		for string in vehicles:
 			string.replace("\"", "")

@@ -43,7 +43,7 @@ if len(vehicles) == 0:
 	sys.exit()
 
 # Get list of models from vehicle_dir
-models = get_models(vehicle_dir)
+models = unpack.get_models(vehicle_dir)
 
 # Check if strings in vehicles match models
 for v in vehicles:
@@ -57,3 +57,5 @@ for v in vehicles:
 
 # Unpack all vehicles
 #get_vehicles()
+
+# Set up ai
