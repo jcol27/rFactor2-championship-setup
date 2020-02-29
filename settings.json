@@ -4,7 +4,8 @@
 	"paths": 
 	{
 		"vehicle_dir": "C:/Program Files (x86)/Steam/steamapps/common/rFactor 2/Installed/Vehicles",
-		"output_dir": "C:/Documents/RF2/Vehicles",
-		"mod_mgr_path": "C:/Program Files (x86)/Steam/steamapps/common/rFactor 2/Bin32/ModMgr.exe"
+		"output_dir": "C:/Users/Jack/Documents/RF2/Vehicles",
+		"mod_mgr_path": "C:/Program Files (x86)/Steam/steamapps/common/rFactor 2/Bin32/ModMgr.exe",
+		"temp_dir": "C:/Users/Jack/Documents/RF2/Temp"
 	}
 }
