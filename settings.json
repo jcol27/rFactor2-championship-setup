@@ -1,6 +1,7 @@
 {
 	"modified": "True",
-	"cship_name": "Formula Renault 1",
+	"cship_name": "GT3 #1",
+	"resolve_missing_file_method": "skip",
 	"paths": 
 	{
 		"vehicle_dir": "C:/Program Files (x86)/Steam/steamapps/common/rFactor 2/Installed/Vehicles",

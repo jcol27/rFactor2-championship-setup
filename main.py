@@ -11,16 +11,18 @@ import sys
 json_data = unpack.read_json()
 
 # Catches for incorrect input in settings.json
-if len(json_data) == 1 or not os.path.exists(json_data[2]) or not os.path.exists(json_data[3]) or not os.path.isfile(json_data[4]):
-	print("Error reading json file. Please edit this file to contain the correct paths, then change \"modified\" to \"True\"")
+if len(json_data) == 1 or not os.path.exists(json_data[3]) or not os.path.exists(json_data[4]) or not os.path.isfile(json_data[5] or not os.path.exists(json_data[6])):
+	print("Error reading json file. Please edit this file to contain the correct paths, check that all paths are valid and exist, then change \"modified\" to \"True\"")
 	sys.exit()
 else:
 	modified = json_data[0]
 	cship_name = json_data[1]
-	vehicle_dir = json_data[2]
-	output_dir = json_data[3]
-	mod_mgr_path = json_data[4]
-	temp_dir = json_data[5]
+	resolve_missing_file_method = json_data[2]
+	vehicle_dir = json_data[3]
+	output_dir = json_data[4] + "/" + cship_name
+	unpack.create_dir(output_dir)
+	mod_mgr_path = json_data[5]
+	temp_dir = json_data[6]
 
 
 # Gets list of drivers (list of objects of class Driver)
@@ -57,6 +59,6 @@ for v in vehicles:
 		sys.exit()
 
 # Unpack all vehicles
-unpack.get_vehicles(vehicle_dir, temp_dir, output_dir, vehicles, mod_mgr_path)
+unpack.get_vehicles(vehicle_dir, temp_dir, output_dir, vehicles, mod_mgr_path, resolve_missing_file_method)
 
 # Set up ai
