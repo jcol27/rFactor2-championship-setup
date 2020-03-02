@@ -30,17 +30,21 @@ class Driver():
 		self.recovery = recovery
 		self.reputation = reputation
 		self.courtesy = courtesy
+		unique_id_split = unique_id.split(":")
+		self.car_folder_name = unique_id_split[0]
+		self.skin_folder_name = unique_id_split[1]
 
-	def set_vehicle_file(self, output_dir):
-		skin_file = Path(output_dir, self.unique_id.split(":")[0], self.unique_id.split(":")[1] ) 
+	def set_vehicle_file(self, output_vehicle_dir):
+		skin_file = Path(output_vehicle_dir, self.unique_id.split(":")[0], self.unique_id.split(":")[1]) 
 		for file in os.listdir(skin_file):
-			if file.count(.veh) != 0:
+			if file.count(".veh") != 0:
 				vehicle_file = file
 		#vehicle_file = Path(skin_file, vehicle_file)
 		try:	
 			self.vehicle_file = vehicle_file
 		except:
-			print(f"Error setting vehicle file. Tried to find /{unique_id.split(":")[0]}/{unique_id.split(":")[1]}.veh but couldn't. Check drivers.csv and settings.json are set up correctly and retry.")
+			a = unique_id.split(":")
+			print(f"Error setting vehicle file. Tried to find /{a[0]}/{a[1]}.veh but couldn't. Check drivers.csv and settings.json are set up correctly and retry.")
 			sys.exit()
 		return None
 
@@ -73,12 +77,6 @@ def read_json():
 	file.close()
 	modified = data["modified"]
 	if modified == "True":
-		cship_name = data["cship_name"]
-		resolve_missing_file_method = data["resolve_missing_file_method"]
-		vehicle_dir = data["paths"]["vehicle_dir"]
-		output_dir = data["paths"]["output_dir"]
-		mod_mgr_path = data["paths"]["mod_mgr_path"]
-		temp_dir = data["paths"]["output_dir"] + "/" + "Temp"
 		return data
 	return [modified]
 

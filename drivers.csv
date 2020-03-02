@@ -1,21 +1,21 @@
 ﻿First,Last,Team,Number,Class,Category,Unique ID,Speed,Qualify Speed,Wet Speed,Aggression,Composure,Crash,Completed Laps,Min Racing Skill,Start Skill,Recovery,Reputation,Courtesy
-Lewis,Hamilton,Mercedes AMG Petronas F1,44,F1,2020 Grid,1,97,97,96,75,90,0,100,96,90,80,80,80
-Valtteri,Bottas,Mercedes AMG Petronas F1,77,F1,2020 Grid,2,95,95,93,75,85,0,100,94,90,80,80,80
-Sebastian,Vettel,Scuderia Ferrari,5,F1,2020 Grid,3,96,96,94,75,75,0,100,94,88,80,80,80
-Charles,Leclerc,Scuderia Ferrari,16,F1,2020 Grid,4,96,96,94,80,75,0,100,94,88,80,80,80
-Max,Verstappen,Red Bull Racing,33,F1,2020 Grid,5,96,96,96,85,70,0,100,94,85,80,80,80
-Alex,Albon,Red Bull Racing,23,F1,2020 Grid,6,93,93,91,65,75,0,100,92,88,80,80,80
-Carlos,Sainz,McLaren F1 Team,55,F1,2020 Grid,7,94,94,93,70,75,0,100,93,85,80,80,80
-Lando,Norris,McLaren F1 Team,4,F1,2020 Grid,8,94,94,93,70,75,0,100,92,83,80,80,80
-Daniel,Ricciardo,Renault F1 Team,3,F1,2020 Grid,9,94,94,93,85,80,0,100,93,88,80,80,80
-Esteban,Ocon,Renault F1 Team,31,F1,2020 Grid,10,93,93,92,80,75,0,100,92,85,80,80,80
-Daniil,Kyvat,Scuderia Alpha Tauri Honda,26,F1,2020 Grid,11,93,93,93,85,70,0,100,93,85,80,80,80
-Pierre,Gasly,Scuderia Alpha Tauri Honda,10,F1,2020 Grid,12,93,93,92,70,75,0,100,92,85,80,80,80
-Sergio,Perez,BWT Racing Point F1 Team,11,F1,2020 Grid,13,94,94,93,75,80,0,100,93,85,80,80,80
-Lance,Stroll,BWT Racing Point F1 Team,18,F1,2020 Grid,14,92,92,91,75,75,0,100,89,80,80,80,80
-Kimi,Raikkonen,Alfa Romeo Racing,7,F1,2020 Grid,15,93,93,93,75,85,0,100,93,85,80,80,80
-Antonio,Giovinazzi,Alfa Romeo Racing,99,F1,2020 Grid,16,92,92,91,70,70,0,100,91,83,80,80,80
-Romain,Grosjean,Haas F1 Team,8,F1,2020 Grid,17,92,92,91,85,70,0,100,91,82,80,80,80
-Kevin,Magnussen,Haas F1 Team,20,F1,2020 Grid,18,92,92,91,85,70,0,100,91,82,80,80,80
-George,Russell,ROKIT Williams Racing,63,F1,2020 Grid,19,91,91,90,75,75,0,100,90,85,80,80,80
-Nicolas,Latifi,ROKIT Williams Racing,6,F1,2020 Grid,20,91,91,90,70,70,0,100,90,80,80,80,80
+Lewis,Hamilton,Mercedes AMG Petronas F1,44,F1,2020 Grid,Mercedes_AMG_GT3_2017:mercslsgt3,97,97,97,75,90,0,100,0,90,80,80,80
+Valtteri,Bottas,Mercedes AMG Petronas F1,77,F1,2020 Grid,Mercedes_AMG_GT3_2017:mercslsgt3,96,96,96,75,85,0,100,0,90,80,80,80
+Sebastian,Vettel,Scuderia Ferrari,5,F1,2020 Grid,Audi_R8LMS_GT3_2019:audi_r8lms,97,97,97,75,75,0,100,0,88,80,80,80
+Charles,Leclerc,Scuderia Ferrari,16,F1,2020 Grid,Audi_R8LMS_GT3_2019:audi_r8lms,96,96,96,80,75,0,100,0,88,80,80,80
+Max,Verstappen,Red Bull Racing,33,F1,2020 Grid,BMW_M6_GT3_2018:m6alt,96,96,96,85,70,0,100,0,85,80,80,80
+Alex,Albon,Red Bull Racing,23,F1,2020 Grid,BMW_M6_GT3_2018:m6alt,95,95,95,65,75,0,100,0,88,80,80,80
+Carlos,Sainz,McLaren F1 Team,55,F1,2020 Grid,McLaren_720S_GT3_2018:mcl720s-gt,94,94,94,70,75,0,100,0,85,80,80,80
+Lando,Norris,McLaren F1 Team,4,F1,2020 Grid,McLaren_720S_GT3_2018:mcl720s-gt,94,94,94,70,75,0,100,0,83,80,80,80
+Daniel,Ricciardo,Renault F1 Team,3,F1,2020 Grid,Bentley_Continental_GT3_2017:altspadben,93,93,93,85,80,0,100,0,88,80,80,80
+Esteban,Ocon,Renault F1 Team,31,F1,2020 Grid,Bentley_Continental_GT3_2017:altspadben,92,92,92,80,75,0,100,0,85,80,80,80
+Daniil,Kyvat,Scuderia Alpha Tauri Honda,26,F1,2020 Grid,Porsche_911_GT3_R_2018:p991gt3r_5,91,91,91,85,70,0,100,0,85,80,80,80
+Pierre,Gasly,Scuderia Alpha Tauri Honda,10,F1,2020 Grid,Porsche_911_GT3_R_2018:p991gt3r_5,91,91,91,70,75,0,100,0,85,80,80,80
+Sergio,Perez,BWT Racing Point F1 Team,11,F1,2020 Grid,Audi_R8LMS_GT3_2018:r8lms_26,91,91,91,75,80,0,100,0,85,80,80,80
+Lance,Stroll,BWT Racing Point F1 Team,18,F1,2020 Grid,Audi_R8LMS_GT3_2018:r8lms_26,91,91,91,75,75,0,100,0,80,80,80,80
+Kimi,Raikkonen,Alfa Romeo Racing,7,F1,2020 Grid,Radical_RXC_GT3_2017:13redline,89,89,89,75,85,0,100,0,85,80,80,80
+Antonio,Giovinazzi,Alfa Romeo Racing,99,F1,2020 Grid,Radical_RXC_GT3_2017:13redline,89,89,89,70,70,0,100,0,83,80,80,80
+Romain,Grosjean,Haas F1 Team,8,F1,2020 Grid,Callaway_Corvette_GT3_2017:51sf,88,88,88,85,70,0,100,0,82,80,80,80
+Kevin,Magnussen,Haas F1 Team,20,F1,2020 Grid,Callaway_Corvette_GT3_2017:51sf,88,88,88,85,70,0,100,0,82,80,80,80
+George,Russell,ROKIT Williams Racing,63,F1,2020 Grid,BMW_M6_GT3_2018:rowealt,86,86,86,75,75,0,100,0,85,80,80,80
+Nicolas,Latifi,ROKIT Williams Racing,6,F1,2020 Grid,BMW_M6_GT3_2018:rowealt,86,86,86,70,70,0,100,0,80,80,80,80

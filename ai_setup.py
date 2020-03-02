@@ -1,52 +1,56 @@
-from shutil import copy
+from shutil import copy, rmtree
+import os
+from pathlib import Path
+import sys
 
-def delete_existing_dirs():
-	pass
+def delete_existing_dirs(vehicles, player_dir):
+	for vehicle in vehicles:
+		if os.path.exists(Path(player_dir, vehicle)):
+			rmtree(Path(player_dir, vehicle))
 
-def create_driver_dirs(drivers):
+	return None
+
+def create_driver_dirs(drivers, player_dir, output_vehicle_dir):
 	
-	for d in drivers:
+	for driver in drivers:
 		# Create car directory
-		car_dir = Path('.', player_dir, d.car)
-		if not os.exists(car_dir):
+		car_dir = Path(player_dir, driver.car_folder_name)
+		if not os.path.exists(car_dir):
 			os.makedirs(car_dir)
 
 		# Create ai directory
-		ai_dir = Path('.',player_dir,driver.car,driver.first + " " + driver.last)
+		ai_dir = Path(player_dir, driver.car_folder_name, driver.first + " " + driver.last)
 		os.makedirs(ai_dir)
 
 		# Copy vehicle files
-		car_files = os.listdirs(Path(vehicle.dir, driver.car, driver.folder))
+		car_files = os.listdir(Path(output_vehicle_dir, driver.car_folder_name, driver.skin_folder_name))
 		for i in car_files:
-			i.lower()
+			copy(Path(output_vehicle_dir, driver.car_folder_name, driver.skin_folder_name, i), ai_dir)
 		### file idx
 		print(f"Copying {driver.first} {driver.last}")
-		copy(, ai_dir)
 
-		return None
+	return None
 
 def create_rcd_idx(drivers):
 	for idx, driver in enumerate(drivers):
 		driver.idx = idx
 
-def create_rcd_file(driver):
+def create_rcd_file(driver, player_dir):
 	
-	rcd = ""
-	rcd.join("\n", 
-		[
-		"//[[gMa1.002f (c)2016 ]] [[ ]]", 
-		driver.car_class, 
+	rcd = "\n"
+	seq = ("//[[gMa1.002f (c)2016 ]] [[ ]]", 
+		driver.drclass, 
 		"{", 
 		driver.first + " " + driver.last, 
 		"{", 
 		"Team = " + driver.team, 
-		"Component = " + driver.car, 
+		"Component = " + driver.car_folder_name, 
 		"Skin = alt.dds", 
-		"VehFile = " + driver.vehicle_file
-		"Description = " + "#" + driver.number + " " + driver.car.replace("_", " "),
+		"VehFile = " + driver.vehicle_file,
+		"Description = " + "#" + driver.number + " " + driver.car_folder_name.replace("_", " "),
 		"Number = " + driver.number,
-		"Classes = " + driver.car_class + " " + driver.car_category,
-		"Category = " + driver.car_category,
+		"Classes = " + driver.drclass + " " + driver.category,
+		"Category = " + driver.category,
 		"Aggression = " + driver.aggression,
 		"Reputation = " + driver.reputation,
 		"Courtesy = " + driver.courtesy,
@@ -54,28 +58,31 @@ def create_rcd_file(driver):
 		"Speed = " + driver.speed,
 		"QualifySpeed = " + driver.qualify_speed,
 		"WetSpeed = " + driver.wet_speed,
-		"StartSkill = " + driver.startskill,
+		"StartSkill = " + driver.start_skill,
 		"Crash = " + driver.crash,
 		"Recovery = " + driver.recovery,
-		"CompletedLaps = " + drivers.completed_laps,
+		"CompletedLaps = " + driver.completed_laps,
 		"MinRacingSkill = " + driver.min_racing_skill,
 		"}",
 		"}"
-		])
+		)
+	rcd = rcd.join(seq)
 
-	file_name = driver.idx + ".rcd"
-	with open(player_dir + driver.car + "/" + file_name, 'w') as file:
+	file_name = str(driver.idx) + ".rcd"
+	with open(player_dir + "/" + driver.car_folder_name + "/" + file_name, 'w') as file:
 		file.write(rcd)
 		file.close()
 
 	return None
 	
-def set_up_ai(drivers):
-	delete_existing_dirs()
-	create_driver_dirs(drivers)
+def set_up_ai(drivers, vehicles, output_vehicle_dir, player_dir, vehicle_dir):
+	for driver in drivers:
+		driver.set_vehicle_file(output_vehicle_dir)
+	delete_existing_dirs(vehicles, player_dir)
+	create_driver_dirs(drivers, player_dir, output_vehicle_dir)
 	create_rcd_idx(drivers)
 	for driver in drivers:
-		create_rcd_file(driver)
+		create_rcd_file(driver, player_dir)
 
 	return None
 
