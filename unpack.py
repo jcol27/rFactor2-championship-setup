@@ -9,22 +9,40 @@ import sys
 
 # Class to store driver attributes
 class Driver():
-	def __init__(self, first, last, number, team, unique_id, speed, wet_speed, aggression, composure, min_racing_skill, start_skill):
-		
+	def __init__(self, first, last, team, number, drclass, category, unique_id, speed, qualify_speed, wet_speed, aggression, composure, crash, completed_laps, min_racing_skill, start_skill, recovery, reputation, courtesy):
+		self.idx = 0
 		self.first = first
 		self.last = last
-		self.number = number
 		self.team = team
+		self.number = number
+		self.drclass = drclass
+		self.category = category
 		self.unique_id = unique_id
 		self.speed = speed
+		self.qualify_speed = qualify_speed
 		self.wet_speed = wet_speed
 		self.aggression = aggression
 		self.composure = composure
+		self.crash = crash
+		self.completed_laps = completed_laps
 		self.min_racing_skill = min_racing_skill
 		self.start_skill = start_skill
+		self.recovery = recovery
+		self.reputation = reputation
+		self.courtesy = courtesy
 
-	def set_vehicle_file(self, dir):
-		self.vehicle_file = dir
+	def set_vehicle_file(self, output_dir):
+		skin_file = Path(output_dir, self.unique_id.split(":")[0], self.unique_id.split(":")[1] ) 
+		for file in os.listdir(skin_file):
+			if file.count(.veh) != 0:
+				vehicle_file = file
+		#vehicle_file = Path(skin_file, vehicle_file)
+		try:	
+			self.vehicle_file = vehicle_file
+		except:
+			print(f"Error setting vehicle file. Tried to find /{unique_id.split(":")[0]}/{unique_id.split(":")[1]}.veh but couldn't. Check drivers.csv and settings.json are set up correctly and retry.")
+			sys.exit()
+		return None
 
 # Helper function to check if string represents an int
 def represents_int(li):
@@ -60,8 +78,8 @@ def read_json():
 		vehicle_dir = data["paths"]["vehicle_dir"]
 		output_dir = data["paths"]["output_dir"]
 		mod_mgr_path = data["paths"]["mod_mgr_path"]
-		temp_dir = data["paths"]["temp_dir"]
-		return [modified, cship_name, resolve_missing_file_method, vehicle_dir, output_dir, mod_mgr_path, temp_dir]
+		temp_dir = data["paths"]["output_dir"] + "/" + "Temp"
+		return data
 	return [modified]
 
 # Read in data from csv, returns list of driver objects
@@ -73,7 +91,7 @@ def read_csv():
 		next(csv_reader)
 		for row in csv_reader:
 			try:	
-				drivers.append(Driver(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9], row[10]))
+				drivers.append(Driver(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9], row[10], row[11], row[12], row[13], row[14], row[15], row[16], row[17], row[18]))
 			except:
 				code = "err"
 	return code, drivers

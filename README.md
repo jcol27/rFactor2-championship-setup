@@ -17,9 +17,8 @@ This file sets some variables and file/folder paths that the program requires. T
 | cship_name | User provided name for the championship. Only used to create separate folders so the script can be re-run for different car combinations | "GT3 Championship #1" |
 | resolve_missing_file_method | Default is skip, currently this has no practical effect and should be left untouched | "skip" |
 | vehicle_dir | This should be the full path to the /Installed/Vehicles folder in your rFactor 2 installation | "C:/Program Files (x86)/Steam/steamapps/common/rFactor 2/Installed/Vehicles" (steam installation) |
-| output_dir | This is the full path to the folder you want to store the vehicle files in. I'd suggest creating a folder structure in your documents folder e.g. Documents/RF2/Vehicles | "C:/Users/~/Documents/RF2/Vehicles" |
+| output_dir | This is the full path to the folder you want to store output files in. You should create this folder before running. I'd suggest creating this folder in your documents folder (although it should work anywhere you can create a folder without admin priviliges) e.g. Documents/RF2/ or  Documents/RF2 cshipmaker files/ etc | "C:/Users/~/Documents/RF2" |
 | mod_mgr_path | This is the full path of the mod_mgr executable found in your rFactor 2 installation under /rFactor 2/bin32/ModMgr.exe | "C:/Program Files (x86)/Steam/steamapps/common/rFactor 2/Bin32/ModMgr.exe" (steam installation) |
-| temp_dir | This is a temporary folder used during operations. Technically shouldn't matter where it is, but I would recommend setting it to be inside the /Documents/RF2 folder you created for output_dir | "C:/Users/~/Documents/RF2/Temp" |
 
 ### vehicles.txt
 
@@ -48,14 +47,20 @@ In this file you should enter the information of the drivers you want to be in t
 | ------ | ------ | ------ |
 | First | The drivers first name | Sebastian |
 | Last | The drivers last name | Vettel |
-| Number | The drivers number | 5 |
+| Number | The drivers number (must be unique) | 5 |
+| Class | The class of car the driver is driving (no spaces) | GT3 |
+| Category | The category of drivers the driver is in, shown in car selection screen i.e. all cars will be listed under this so should be the same for all drivers (no spaces) | GT3_Cars_F1_2020_Grid |
 | Team | The drivers team | Scuderia Ferrari |
-| Unique ID | Unique ID for identification. I would suggest starting at 1 and ascending | 1 |
+| Unique ID | Unique ID of car and skin driver will use. This will be the folder name of the car plus the folder name of the skin, joined with a colon | AstonMartin_Vantage_GT3_2019:am_stop_89 |
 | Speed | How close to optimally the driver drives (0-100). A setting of 0 corresponds to driving 90% of the optimal, with an increase of 1 in this setting representing an increase of 0.1% up to 100. May require some playing around. | 98 |
-| Wet Speed | How well the driver drives in the wet (1-100). Most likely a function of the optimal wet performance but I'm not sure. May require some playing around. | 95 |
+| Qualify Speed | How well the driver qualifies (0-100) | Most likely a function of optimal qualifying pace but I'm not sure. May require some playing around. | 98 |
+| Wet Speed | How well the driver drives in the wet (0-100). Most likely a function of the optimal wet performance but I'm not sure. May require some playing around. | 95 |
 | Aggression | How aggressive the driver is (0-100). A more aggressive driver will give less room, try to pass more frequently, and increase the threshold before they give up a pass. This is affected by the overall ai aggression setting in the ui, so the final aggression is +- up to 20% of the overall value (ie 0 is -20 of overall, 50 is same as overall, 100 is +20 of overall | 60 |
 | Composure | How composed the driver is (0-100). Lower numbers increase the frequency of mistakes (if AI Mistakes is >0 in the playerfile) and decrease the time between bad driving zones | 84 |
+| Crash | Percentage chance of a driver crashing in a skipped session (0-100) | 0 |
+| Completed Laps | Percentage of laps on average a driver completes in a skipped session | 100 |
 | Min Racing Skill | The drivers minimum skill (0-100). If AI Limiter > 0.0 in playerfile, then drivers go through cycles of optimal driving and sub-optimal driving, where their driving skill falls to minracingskill*speed | 95 |
 | Start Skill | How well the driver gets off the start line (0-100). Relative to a perfect start. Higher values mean the driver will react faster and have better inputs for best grip | 90 |
-
-
+| Recovery | Deprecated | 100 |
+| Reputation | Deprecated | 100 |
+| Courtesy | Deprecated | 100 |
