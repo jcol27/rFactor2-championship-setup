@@ -38,37 +38,45 @@ def create_rcd_idx(drivers):
 def create_rcd_file(driver, player_dir):
 	
 	rcd = "\n"
-	seq = ("//[[gMa1.002f (c)2016 ]] [[ ]]", 
+	seq = ("//[[gMa1.002f (c)2016    ]] [[            ]]", 
 		driver.drclass, 
 		"{", 
-		driver.first + " " + driver.last, 
-		"{", 
-		"Team = " + driver.team, 
-		"Component = " + driver.car_folder_name, 
-		"Skin = alt.dds", 
-		"VehFile = " + driver.vehicle_file,
-		"Description = " + "#" + driver.number + " " + driver.car_folder_name.replace("_", " "),
-		"Number = " + driver.number,
-		"Classes = " + driver.drclass + " " + driver.category,
-		"Category = " + driver.category,
-		"Aggression = " + driver.aggression,
-		"Reputation = " + driver.reputation,
-		"Courtesy = " + driver.courtesy,
-		"Composure = " + driver.composure,
-		"Speed = " + driver.speed,
-		"QualifySpeed = " + driver.qualify_speed,
-		"WetSpeed = " + driver.wet_speed,
-		"StartSkill = " + driver.start_skill,
-		"Crash = " + driver.crash,
-		"Recovery = " + driver.recovery,
-		"CompletedLaps = " + driver.completed_laps,
-		"MinRacingSkill = " + driver.min_racing_skill,
-		"}",
+		"  " + driver.first + " " + driver.last, 
+		"  " + "{", 
+		"  " + "  " + "Team = " + driver.team, 
+		"  " + "  " + "Component = " + driver.car_folder_name, 
+		"  " + "  " + "Skin = alt.dds", 
+		"  " + "  " + "VehFile = " + driver.vehicle_file,
+		"  " + "  " + "Description = " + "#" + driver.number + " " + driver.car_folder_name.replace("_", " "),
+		"  " + "  " + "Number = " + driver.number,
+		"  " + "  " + "Classes = " + driver.drclass + " " + driver.category,
+		"  " + "  " + "Category = " + driver.category,
+		"  " + "  " + "Aggression = " + driver.aggression,
+		"  " + "  " + "Reputation = " + driver.reputation,
+		"  " + "  " + "Courtesy = " + driver.courtesy,
+		"  " + "  " + "Composure = " + driver.composure,
+		"  " + "  " + "Speed = " + driver.speed,
+		"  " + "  " + "QualifySpeed = " + driver.qualify_speed,
+		"  " + "  " + "WetSpeed = " + driver.wet_speed,
+		"  " + "  " + "StartSkill = " + driver.start_skill,
+		"  " + "  " + "Crash = " + driver.crash,
+		"  " + "  " + "Recovery = " + driver.recovery,
+		"  " + "  " + "CompletedLaps = " + driver.completed_laps,
+		"  " + "  " + "MinRacingSkill = " + driver.min_racing_skill,
+		"  " + "}",
 		"}"
 		)
 	rcd = rcd.join(seq)
 
-	file_name = str(driver.idx) + ".rcd"
+	# Generating rcd filename based on count
+	files = os.listdir(Path(player_dir, driver.car_folder_name))
+	rcd_count = 0
+	for file in files:
+		if file.count(".rcd") == 1:
+			rcd_count += 1
+	file_name = str(rcd_count) + ".rcd"
+
+	# Write rcd file
 	with open(player_dir + "/" + driver.car_folder_name + "/" + file_name, 'w') as file:
 		file.write(rcd)
 		file.close()
@@ -85,4 +93,3 @@ def set_up_ai(drivers, vehicles, output_vehicle_dir, player_dir, vehicle_dir):
 		create_rcd_file(driver, player_dir)
 
 	return None
-

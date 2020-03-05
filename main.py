@@ -11,7 +11,7 @@ import sys
 json_data = unpack.read_json()
 
 # Catches for incorrect input in settings.json
-if type(json_data) == list :
+if type(json_data) == list:
 	print("Error reading json file. Please edit this file to contain the correct paths, check that all paths are valid and exist, then change \"modified\" to \"True\"")
 	sys.exit()
 elif not os.path.exists(json_data["vehicle_dir"]) or not os.path.exists(json_data["player_dir"]) or not os.path.exists(json_data["output_dir"]) or not os.path.exists(json_data["mod_mgr_path"]):

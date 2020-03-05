@@ -193,6 +193,7 @@ def get_vehicles(vehicle_dir, temp_dir, output_dir, vehicles, mod_mgr_path, reso
 					veh_dict["json_file"] = veh_base + ".json"
 					veh_dict["veh_folder"] = veh_base.lower()
 					veh_dict["png_file"] = "na"
+					veh_dict
 					p = veh_base.lower() + "[^!@]+icon[.]png$"
 					p = re.compile(p)
 					match = None
@@ -219,15 +220,16 @@ def get_vehicles(vehicle_dir, temp_dir, output_dir, vehicles, mod_mgr_path, reso
 		# File copy
 		skipped = []
 		for idx, veh_dict in enumerate(veh_files_dicts.values()):
-			#print(type(veh_dict))
-			#print(f"veh_dict = {veh_dict}")
 			copy_dir = Path(output_dir, vehicle, veh_files[idx][:-12])
 			create_dir(copy_dir)
 			copy(Path(temp_dir, veh_files[idx]), copy_dir)
+			copy(Path(vehicle_dir, vehicle, get_latest_version(vehicle_dir, vehicle), "car-upgrade.mas"), copy_dir)
+			os.rename(Path(copy_dir, "car-upgrade.mas"), Path(copy_dir, "alt.mas"))
 			copy(Path(temp_dir, veh_dict["dds_file"]), Path(copy_dir, "alt.dds"))
 
 			if veh_dict["png_file"] != "na":
 				copy(Path(temp_dir, veh_dict["png_file"]), Path(copy_dir, veh_dict["veh_base"] + ".png"))
+			
 			# Try except block for copying .json to allow for missing file
 			try:
 				copy(Path(temp_dir, veh_dict["json_file"]), Path(copy_dir, "alt.json"))
@@ -247,8 +249,6 @@ def get_vehicles(vehicle_dir, temp_dir, output_dir, vehicles, mod_mgr_path, reso
 			except:
 				if resolve_missing_file_method == "replace_with_default":
 					continue
-					#vehicle
-					#copy(, copy_dir)
 				else: 
 					rmtree(copy_dir)
 					skipped.append(str(idx))
